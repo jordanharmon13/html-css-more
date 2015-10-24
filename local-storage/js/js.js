@@ -31,5 +31,14 @@ function saveInput() {
 	console.log(localStorage.getItem(document.getElementById("first-name").value));
 }	
 // create reset function
+function reset() {
 	// reset local storage
+	var first = document.getElementById("first-name").value;
+	localStorage.setItem("firstName", "");
+		
+	var last = document.getElementById("last-name").value
+	localStorage.setItem("lastName", "");
 	
+	// horrible habit, but I am having a hard time doing it without refreshing the pge.
+	location.reload();
+}	

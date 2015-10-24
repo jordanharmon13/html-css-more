@@ -25,7 +25,6 @@
 }
 
 body {
-	background: #303030;
 	font: 1.1em sans-serif;
 }
 .wrap {
@@ -53,6 +52,45 @@ body {
   from { width: 0%; }
   to { width: 100% }
 }
+
+#box-to-circle {
+	width: 100px;
+    height: 100px;
+	background-color: green;
+	position: relative;
+	-webkit-animation-name: go-round;
+	-webkit-animation-duration: 5s;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes go-round {
+	0% {
+		background-color: blue;
+		left: 0px;
+		top: 0px;
+	}
+	25% {
+		background-color: black;
+		left: 200 px;
+		top: 0px;
+	}
+	50% {
+		background-color: yellow;
+		left: 200px;
+		top: 200px;
+	}
+	75% {
+		background-color: white;
+		left: 0px;
+		top: 200px;
+	}
+	100% {
+		background-color: green;
+		left: 0px;
+		top: 0px;
+	}
+}
+
 </style>
 </head>
 <body>
@@ -66,6 +104,9 @@ body {
 	<div class="wrap">
 		<div class="prog-bar"></div>
 	</div>
+	<br>
+	<p>With animations, you can make something go in circles and many other things.</p>
+	<div id="box-to-circle"></div>
 
 </body>
 </html>

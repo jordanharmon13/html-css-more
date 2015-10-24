@@ -2,20 +2,49 @@
 <html>
 <head>
 <style> 
-div {
+#rotate {
     width: 200px;
     height: 100px;
-    background-color: yellow;
+    background-color: white;
+	border: solid black;
     /* Rotate div */
-    -ms-transform: rotate(7deg); /* IE 9 */
-    -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
-    transform: rotate(7deg);
+    -ms-transform: rotate(20deg); /* IE 9 */
+    -webkit-transform: rotate(50deg); /* Chrome, Safari, Opera */
+    transform: rotate(20deg) translate(25px, 20px);
+}
+
+#translateX {
+	width: 200px;
+	height: 200px;
+	background-color: red;
+	transform: translateX(300px);
+}
+
+#scale {
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+	transform: scaleY(2);
+}
+
+#skew {
+	width: 200px;
+	height: 200px;
+	background-color: black;
+	transform: skewY(20deg) translateX(200px);
+	color: white;
 }
 </style>
 </head>
 <body>
 
-<div>Hello</div>
+<div id="rotate">Rotate</div>
+<br>
+<div id="translateX">translate</div>
+<br>
+<div id="scale">Scale</div>
+<br>
+<div id="skew">Skew</div>
 <br>
 
 <p><b>Note:</b> Internet Explorer 8 and earlier versions do not support the transform property.</p>
