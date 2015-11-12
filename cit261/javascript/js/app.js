@@ -48,10 +48,14 @@ var createNewTaskElement = function(taskString) {
 var addTask = function() {
   console.log("Add task...");
   //Create a new list item with the text from #new-task:
-  var listItem = createNewTaskElement(taskInput.value);
-  //Append listItem to incompleteTasksHolder
-  incompleteTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
+  if(taskInput.value.length == 0) {
+	  alert("Please enter a value");
+  } else {
+	var listItem = createNewTaskElement(taskInput.value);
+	//Append listItem to incompleteTasksHolder
+	incompleteTasksHolder.appendChild(listItem);
+	bindTaskEvents(listItem, taskCompleted);
+  }
   
   taskInput.value = "";
 }
@@ -67,15 +71,20 @@ var editTask = function() {
   
   var containsClass = listItem.classList.contains("editMode");
   
+  var saveMode = listItem.querySelector("button[class=edit]");
+  
   //if the class of the parent is .editMode
   if(containsClass) {
     //Switch from .editMode
     //label text become the input's value
     label.innerText = editInput.value;
+	saveMode.innerHTML = 'Edit';
   } else {
     //Switch to .editMode
     //input value becomes the label's text
     editInput.value = label.innerText;
+	saveMode.innerHTML = 'Save';
+
   }
   
   //Toggle .editMode on the list item
@@ -128,13 +137,43 @@ var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
   checkBox.onchange = checkBoxEventHandler;
 }
 
-var ajaxRequest = function() {
-  console.log("AJAX request");
+// ajax code
+
+
+
+function myFunction(arr) {
+	var out = "";
+	for(var i = 0; i < arr.myFile.length; i++) {
+		out += '<ul>';
+		out += '<li>' + arr.myFile[i].toDo; + '</li>';
+		out += '</ul>';
+	}
+	console.log(out);
+	document.getElementById('object').innerHTML = out;
+}
+
+// myObject(myArray);
+
+function getToDoList() {
+	console.log("started");
+	var ajaxRequest = new XMLHttpRequest();
+	var url = "/cit261/javascript/data/toDoList.txt";
+
+	ajaxRequest.onreadystatechange = function() {
+		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
+			console.log('made it');
+			myFunction(ajaxRequest.response);
+		}
+	}
+	
+	ajaxRequest.open("GET", url, true);
+	ajaxRequest.responseType = 'json';
+
+	ajaxRequest.send();	
 }
 
 //Set the click handler to the addTask function
 addButton.addEventListener("click", addTask);
-addButton.addEventListener("click", ajaxRequest);
 
 //cycle over incompleteTasksHolder ul list items
 for(var i = 0; i < incompleteTasksHolder.children.length; i++) {
@@ -147,3 +186,36 @@ for(var i = 0; i < completedTasksHolder.children.length; i++) {
   //bind events to list item's children (taskIncomplete)
   bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
