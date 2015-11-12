@@ -6,7 +6,7 @@ body {
 }
 .container {
   display: block;
-  width: 400px;
+  width: 450px;
   margin: 100px auto 0;
 }
 ul {
@@ -34,7 +34,8 @@ button {
   cursor: pointer;
 }
 button:hover {
-  color: #333;
+	background: grey;
+  color: white;
 }
 /* Heading */
 h3,
@@ -118,3 +119,8 @@ ul li.editMode input[type=text] {
 ul li.editMode label {
   display:none;
 }
+
+#reset {
+	text-align: right;
+}
+

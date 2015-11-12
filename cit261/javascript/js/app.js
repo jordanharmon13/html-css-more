@@ -2,7 +2,7 @@
 //Solution: Add interactivty so the user can manage daily tasks.
 
 var taskInput = document.getElementById("new-task"); //new-task
-var addButton = document.getElementsByTagName("button")[0]; //first button
+var addButton = document.getElementById("add-task"); //first button
 var incompleteTasksHolder = document.getElementById("incomplete-tasks"); //incomplete-tasks
 var completedTasksHolder= document.getElementById("completed-tasks"); //completed-tasks
 
@@ -57,7 +57,7 @@ var addTask = function() {
 	bindTaskEvents(listItem, taskCompleted);
   }
   
-  taskInput.value = "";
+	taskInput.value = "";
 }
 
 //Edit an existing task
@@ -139,7 +139,10 @@ var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
 
 // ajax code
 
-
+var strToJSON = function() {
+	var newInput = JSON.stringify(taskInput);
+	console.log(newInput);
+}
 
 function myFunction(arr) {
 	var out = "";
@@ -174,6 +177,7 @@ function getToDoList() {
 
 //Set the click handler to the addTask function
 addButton.addEventListener("click", addTask);
+addButton.addEventListener("click", strToJSON);
 
 //cycle over incompleteTasksHolder ul list items
 for(var i = 0; i < incompleteTasksHolder.children.length; i++) {

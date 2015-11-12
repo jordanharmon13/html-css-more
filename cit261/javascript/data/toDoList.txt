@@ -7,13 +7,19 @@
 			"toDo": "Play Games"
 		},
 		{
-			"toDo": "Hello world"
+			"toDo": "Eat Breakfast"
 		},
 		{
 			"toDo": "play Games"
 		},
 		{
 			"toDo": "Go to work"
+		},
+		{
+			"toDo": "Read Scriptures"
+		},
+		{
+			"toDo": "Go to Church"
 		}
 	]
 }
